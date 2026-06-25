@@ -67,6 +67,17 @@ Edit [src/main.c](src/main.c):
 - `#define BLINK_INTERVAL_MS 2000U` -> set your desired interval in milliseconds.
 - `#define LED_PORT`, `#define LED_PIN`, `#define LED_RCC` -> change these only if you move to a different LED pin/board.
 
+## Connect an external LED
+
+Wire it like this:
+
+- GPIO pin -> 220 ohm to 1 kOhm resistor -> LED anode (+)
+- LED cathode (-) -> GND
+
+For this NUCLEO-F303K8 setup, use Arduino **D7**, which maps to **PF0** in [src/main.c](src/main.c).
+Do not use A7 for this blink example unless you intentionally change the code to another analog-capable pin.
+Keep the resistor in series so you do not damage the LED or the STM32 pin.
+
 After changing code, run:
 
 ```powershell
